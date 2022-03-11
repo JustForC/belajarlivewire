@@ -8,4 +8,20 @@
     window.addEventListener('closeModalCreate', event => {
         $("#basicModal").modal('hide');                
     })
+
+    window.addEventListener('openUpdateModal', event => {
+        $("#updateModal").modal('show');
+    })
+
+    window.addEventListener('closeUpdateModal', event => {
+        $("#updateModal").modal('hide');
+    })
+
+    window.addEventListener('openDeleteModal', event => {
+        $("#deleteModal").modal('show');
+    })
+
+    window.addEventListener('closeDeleteModal', event => {
+        $("#deleteModal").modal('hide');
+    })
 </script>

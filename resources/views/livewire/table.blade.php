@@ -18,8 +18,8 @@
                             <td>{{$product->category->name}}</td>
                             <td>Rp. {{$product->price}}</td>
                             <td>
-                                <button class="btn btn-info" id="editButton">Edit</button>
-                                <button class="btn btn-danger delete" >Delete</button>
+                                <button class="btn btn-info" wire:click="selectItem({{ $product->id }}, 'update')" id="editButton">Edit</button>
+                                <button class="btn btn-danger delete" wire:click="selectItem({{ $product->id }}, 'delete')" >Delete</button>
                             </td>
                         </tr>
                         @endforeach

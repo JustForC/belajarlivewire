@@ -35,7 +35,7 @@ class CreateForm extends Component
             'price' => $this->price,
         ]);
 
-        $this->emit('refreshParent');   
+        $this->emit('refreshTable');   
         $this->dispatchBrowserEvent('closeModalCreate');
         $this->cleanInput();
     }

@@ -1,15 +1,14 @@
 <div>
     <div class="modal fade" id="basicModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" wire:click="$emit('closeFormCreate')"><span>&times;</span>
-                    </button>
-                </div>
-                <livewire:create-form></livewire:create-form>
-            </div>
-        </div>
+        <livewire:create-form></livewire:create-form>
+    </div>
+
+    <div class="modal fade" id="updateModal">
+        <livewire:update-form></livewire:update-form>
+    </div>
+
+    <div class="modal fade" id="deleteModal">
+        <livewire:delete-form></livewire:delete-form>
     </div>
     
     <div class="content-body">
