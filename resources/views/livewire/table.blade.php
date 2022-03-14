@@ -15,9 +15,9 @@
                     <table id="list-products" class="table table-striped table-responsive-sm" style="min-width: 845px">
                         <thead>
                             <tr>
-                                <th>Produk</th>
-                                <th>Kategori</th>
-                                <th>Harga</th>
+                                <th wire:click="sorting('name')">Produk</th>
+                                <th wire:click="sorting('category_id')">Kategori</th>
+                                <th wire:click="sorting('price')">Harga</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

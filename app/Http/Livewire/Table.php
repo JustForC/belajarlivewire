@@ -12,10 +12,22 @@ class Table extends Component
 
     var $selectedId;
     var $search;
+    var $sortName = 'name';
+    var $sortType = 'asc';
 
     protected $listeners = [
         'refreshTable' => '$refresh'
     ]; 
+
+    public function sorting($name){
+        $this->sortName = $name;
+        if($this->sortType == 'asc'){
+            $this->sortType = 'desc';
+        }
+        else{
+            $this->sortType = 'asc';
+        }
+    }
 
     public function render()
     {
@@ -23,6 +35,7 @@ class Table extends Component
                             ->where('name', 'LIKE', "%".$this->search."%")
                             ->orWhere('price', 'LIKE', "%".$this->search."%")
                             ->orWhereRelation('category', 'name', 'LIKE', "%".$this->search."%")
+                            ->orderBy($this->sortName, $this->sortType)
                             ->paginate(5);
         return view('livewire.table')->with(['products' => $products]);
     }

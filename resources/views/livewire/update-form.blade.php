@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <img src="{{storage_path($path)}}" alt="" class="img-fluid mt-4 mb-4 w-100">
+                        <img src="{{asset($path)}}" alt="" class="img-fluid mt-4 mb-4 w-100">
                     </div>
                     <input wire:model="path" type="hidden">
                 </div>

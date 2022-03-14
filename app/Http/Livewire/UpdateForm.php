@@ -36,15 +36,6 @@ class UpdateForm extends Component
     }
 
     public function save(){
-        $data = [
-            'name' => $this->name,
-            'path' => $this->path,
-            'price' => $this->price,
-            'categoryId' => $this->categoryId,
-            'modelId' => $this->modelId,
-            'image' => $this->image,
-        ];
-
         if($this->image == NULL){
             Product::find($this->modelId)->update([
                 'name' => $this->name,
@@ -58,11 +49,13 @@ class UpdateForm extends Component
             $this->clearInput();
         }
         else{
+            $directory = '/upload/image/product/';
             $filename = $this->name.'.'.$this->image->extension();
-            $cek = $this->image->storeAs('upload/product/', $filename);
+            $this->image->storeAs($directory, $filename);
+            $path = 'storage/' . $directory . $filename;
     
             $product = Product::find($this->modelId)->update([
-                'path' => 'app/upload/product/'.$filename,
+                'path' => $path,
                 'name' => $this->name,
                 'category_id' => $this->categoryId,
                 'price' => $this->price,
