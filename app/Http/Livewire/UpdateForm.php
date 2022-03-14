@@ -5,16 +5,20 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use App\Models\Product;
+use Livewire\WithFileUploads;
 
 class UpdateForm extends Component
 {
-    var $modelId, $path, $name, $price, $categoryId, $image;
+    use WithFileUploads;
+
+    var $modelId, $path, $name, $price, $categoryId, $gambar;
 
     protected $listeners = [
         'getModelId'
     ];
 
-    public function getModelId($itemId){
+    public function getModelId($itemId)
+    {
         $this->modelId = $itemId;
         $product = Product::find($this->modelId);
         
@@ -30,13 +34,15 @@ class UpdateForm extends Component
         return view('livewire.update-form')->with(['categories' => $categories]);
     }
 
-    public function closeModal(){
+    public function closeModal()
+    {
         $this->dispatchBrowserEvent('closeUpdateModal');
         $this->clearInput();
     }
 
-    public function save(){
-        if($this->image == NULL){
+    public function save()
+    {
+        if($this->gambar == NULL){
             Product::find($this->modelId)->update([
                 'name' => $this->name,
                 'path' => $this->path,
@@ -49,10 +55,10 @@ class UpdateForm extends Component
             $this->clearInput();
         }
         else{
-            $directory = '/upload/image/product/';
-            $filename = $this->name.'.'.$this->image->extension();
-            $this->image->storeAs($directory, $filename);
-            $path = 'storage/' . $directory . $filename;
+            $directory = '/upload/gambar/product/';
+            $filename = $this->name.'.'.$this->gambar->extension();
+            $this->gambar->storeAs('public'.$directory, $filename);
+            $path = 'storage' . $directory . $filename;
     
             $product = Product::find($this->modelId)->update([
                 'path' => $path,
@@ -67,12 +73,13 @@ class UpdateForm extends Component
         }
     }
 
-    public function clearInput(){
+    public function clearInput()
+    {
         $this->name = NULL;
         $this->path = NULL;
         $this->price = NULL;
         $this->categoryId = NULL;
         $this->modelId = NULL;
-        $this->image = NULL;
+        $this->gambar = NULL;
     }
 }

@@ -22,7 +22,7 @@
                                 <span class="input-group-text">Upload</span>
                             </div>
                             <div class="custom-file">
-                                <input wire:model="image" type="file" class="custom-file-input" name="image">
+                                <input wire:model="gambar" type="file" class="custom-file-input">
                                 <label class="custom-file-label"></label>
                             </div>
                         </div>
@@ -31,13 +31,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label>Nama Produk</label>
-                        <input wire:model="name" type="text" class="form-control form-control-sm" name="name" placeholder="Nama Produk">
+                        <input wire:model="name" type="text" class="form-control form-control-sm" placeholder="Nama Produk">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label>Harga</label>
-                        <input wire:model="price" type="number" class="form-control form-control-sm" name="price" placeholder="Harga Produk">
+                        <input wire:model="price" type="number" class="form-control form-control-sm" placeholder="Harga Produk">
                     </div>
                 </div>
                 <div class="form-row">

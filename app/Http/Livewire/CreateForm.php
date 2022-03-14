@@ -23,11 +23,12 @@ class CreateForm extends Component
         return view('livewire.create-form',['categories' => $categories]);
     }
 
-    public function save(){
+    public function save()
+    {
         $directory = '/upload/image/product/';
         $filename = $this->name.'.'.$this->image->extension();
-        $this->image->storeAs($directory, $filename);
-        $path = 'storage/' . $directory . $filename;
+        $this->image->storeAs('public'.$directory, $filename);
+        $path = 'storage' . $directory . $filename;
 
         $product = Product::create([
             'path' => $path,
@@ -41,14 +42,16 @@ class CreateForm extends Component
         $this->cleanInput();
     }
 
-    public function cleanInput(){
+    public function cleanInput()
+    {
         $this->name = null;
         $this->price = null;
         $this->image = null;
         $this->category_id = null;
     }
 
-    public function closeFormCreate(){
+    public function closeFormCreate()
+    {
         $this->cleanInput();
         $this->dispatchBrowserEvent('closeModalCreate');
     }
