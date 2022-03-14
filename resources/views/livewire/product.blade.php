@@ -30,13 +30,7 @@
     
             <div class="row">
                 <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Basic Datatable</h4>
-                            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#basicModal">Tambah Produk</button>
-                        </div>
-                        <livewire:table></livewire:table>
-                    </div>
+                    <livewire:table></livewire:table>
                 </div>
             </div>
         </div>

@@ -11,6 +11,7 @@ class Table extends Component
     use WithPagination; 
 
     var $selectedId;
+    var $search;
 
     protected $listeners = [
         'refreshTable' => '$refresh'
@@ -18,7 +19,11 @@ class Table extends Component
 
     public function render()
     {
-        $products = Product::with('category')->orderBy('created_at', 'desc')->paginate(5);
+        $products = Product::with('category')
+                            ->where('name', 'LIKE', "%".$this->search."%")
+                            ->orWhere('price', 'LIKE', "%".$this->search."%")
+                            ->orWhereRelation('category', 'name', 'LIKE', "%".$this->search."%")
+                            ->paginate(5);
         return view('livewire.table')->with(['products' => $products]);
     }
 
