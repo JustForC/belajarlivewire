@@ -43,7 +43,11 @@
                             </tr>
                         </tfoot>
                     </table>
-                    {{$products->links()}}
+                    <nav>
+                        <ul class="pagination">
+                            {{$products->links()}}
+                        </ul>
+                    </nav>
                 @endif
             </div>
         </div> 
